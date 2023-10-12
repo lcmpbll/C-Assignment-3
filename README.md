@@ -24,7 +24,7 @@ Paper covers Rock
 ## Known bugs or Upcoming updates
 
 * Must restart program if the user mistypes the input
-* 
+* Score keeping rounds of best out of three
 
 ## Contact
 
