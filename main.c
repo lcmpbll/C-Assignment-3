@@ -17,9 +17,9 @@ int main(void) {
 
   //Welcome user get userPlay
   printf("Welcome to the Rock Paper Scissors Game!\n");
-  printf("What is your play?\n");
   printf("Enter r, p, or s for rock, paper, or scissors respectively\n");
-    // to simplify the rest of the program I would change user input to uppercase or lowercase 
+  printf("What is your play?\n");
+    // to simplify the rest of the program I would change user input to uppercase or lowercase, after their input 
   scanf("%s", userPlay);
 
   // if userPlay is not r, p, or s skip the rest of the program
@@ -58,7 +58,7 @@ int main(void) {
     printf("%s\n", winCondition);
     printf("Thanks for playing!\n");
   } else {
-    // calling the program agaian would be helpful at this point
+    // calling the program again would be helpful at this point
     printf("Invalid play. Please restart the program.\n");
 
   }
