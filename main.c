@@ -11,38 +11,44 @@
 # Sources:          None
 #******************************************************************************/
 int main(void) {
-  char userPlay[2], computerPlay[2], winCondition[50];
+  char userPlay, computerPlay;
+  //char userPlay[2], computerPlay[2];
   int randomNum, winLossTie;
   
   //Welcome user get userPlay
   printf("Welcome to the Rock Paper Scissors Game!\n");
-  printf("Enter r, p, or s for rock, paper, or scissors respectively\n");
-  printf("What is your play?\n");
-    // to simplify the rest of the program I would change user input to uppercase or lowercase, after their input 
-  scanf("%s", userPlay);
+  printf("Enter r, p, or s: ");
   
-    // get random number for computer play, using seed based on time
-    srand(time(NULL));
-    randomNum = rand() % 3;
+  scanf("%c", &userPlay);
+  
+  /* get random number for computer play, using seed based 
+  on time */
+  srand(time(NULL));
+  randomNum = rand() % 3;
 
   // set computer's play
-    
   if(randomNum < 1){
-    computerPlay[0] = 'r';
+    computerPlay = 'r';
   } else if (randomNum > 1) {
-    computerPlay[0] = 'p';
+    computerPlay = 'p';
   } else {
-    computerPlay[0] = 's';
+    computerPlay = 's';
   }
 
-  // if userPlay is not r, p, or s skip the rest of the program
-  switch (userPlay[0]) {
+  /* if userPlay is not r, p, or s skip the rest of the 
+  program alter user play to lower case for comparison */
+  switch (userPlay) {
     case 'r':
-    case 'R':
-    case 'S':
+    case 'R': 
+      userPlay = 'r';
+      break;
     case 's':
+    case 'S': 
+      userPlay = 's';
+      break;
     case 'p':
     case 'P':
+      userPlay = 'p';
       break;
     default:
       printf("Invalid play, please try again.");
@@ -51,27 +57,23 @@ int main(void) {
   }
 
   // Tell the user what their opponent plays
-    printf("Computer plays %c\n", computerPlay[0]);
+  printf("Computer plays %c\n", computerPlay);
   // compare values to decide who wins
-    if(computerPlay[0] == userPlay[0]){
+  if(computerPlay == userPlay){
   // If user and computer play the same thing
-      printf("It's a tie!\n");
-  // Determine who wins
-    } else if (userPlay[0] == 'R' || userPlay[0] == 'r' && computerPlay[0] == 's') {
-      printf("You Win\n");
-    } else if (userPlay[0] == 'P' || userPlay[0] == 'p' && computerPlay[0] == 'r') {
-      printf("You win!\n");
-    } else if (userPlay[0] == 's' || userPlay[0] == 'S' && computerPlay[0] == 'p') {
-      printf("You win!\n");
-    } else {
- // if you don't win or tie you lose
-      printf("You lose!\n");
-    }
+    printf("It's a tie!\n");
+  // Determine if the player wins
+  } else if (userPlay == 'R' || userPlay == 'r' && computerPlay == 's') {
+     printf("User Wins\n");
+  } else if ((userPlay == 'P' || userPlay == 'p') && computerPlay == 'r') {
+    printf("User wins!\n");
+  } else if (userPlay == 's' || userPlay == 'S' && computerPlay == 'p') {
+    printf("User wins!\n");
+  } else {
+  // If it's not a win or tie, it's a loss.
+    printf("Computer wins!\n");
+  }
   
-    printf("Thanks for playing!\n");
-
-
-  
-  
+  printf("Thanks for playing!\n");
   return 0;
 }
